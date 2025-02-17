@@ -1,50 +1,54 @@
 # Notion2ical
 
-This is a simple PHP script streaming Notion database items/pages with a date into the iCalendar format.
+This is a simple Node.js script streaming Notion database items/pages with a date into the iCalendar format.
 
 ## Prerequisites
 
-* PHP ^8.1
-* Composer
+- Node.js >= 14
+- npm or yarn
 
 ## Installation
 
-Install dependencies through composer.
+1. Install dependencies:
 
 ```bash
-composer install
+npm install
 ```
-Create an .env file from the example, and set up the variables explained below.
+
+or
+
+```bash
+yarn install
+```
+
+2. Create an .env file from the example, and set up the variables explained below.
 
 ```bash
 cp .env.example .env
 ```
+
 Set up a [Notion integration](https://developers.notion.com/docs/create-a-notion-integration) to receive an API key.
 
 The iCal feed will be accessible through `https://www.yourdomain.com/index.php?k=<SECRET_KEY>`.
-
-Make sure you add the key in the 'k' GET variable.
-
-## Environment Variables
 
 To run this script, you will need to add the following environment variables to your .env file
 
 `DEBUG_MODE` Debugging mode (prints content if true)
 
-`SECRET_KEY` Security key preventing public access
+`SECRET_KEY` Security key preventing public accessing public access
 
 `NOTION_API_KEY` Notion API key
 
 `NOTION_DB_ID` Notion database ID
 
-`NOTION_DATE_PROPERTY_NAME` Notion property name containing the task date
+`NOTION_DATE_PROPERTY_NAME` Notion property name containing the task dateask date
 
 `NOTION_STATUS_PROPERTY_NAME` Notion property name containing the status
 
-`NOTION_EXCLUDE_STATUS` Notion status to exclude in the iCal feed
+`NOTION_EXCLUDE_STATUS` Notion status to exclude in the iCal feedUDE_STATUS` Notion status to exclude in the iCal feed
 
-`TTL` Suggested update frequency for clients in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) format
+`TTL` Suggested update frequency for clients in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) formatfor clients in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) format
 
-## Changelog
+## ChangelogCan be found [here](CHANGELOG.md)## Changelog
 
-Can be found [here](CHANGELOG.md)
+Can be found [here](CHANGELOG.md)## Changelog

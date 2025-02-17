@@ -1,0 +1,20 @@
+{
+  "name": "notion2ical",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.5",
+    "dotenv": "^16.0.3",
+    "ical-generator": "^3.6.1"
+  },
+  "devDependencies": {
+    "vercel": "^28.15.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
