@@ -5,10 +5,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default async function handler(req, res) {
-    const { db, k } = req.query;
+    const { k } = req.query;
 
     // Verify access
-    if (!db || !k || k !== process.env.SECRET_KEY) {
+    if (!k || k !== process.env.SECRET_KEY) {
         return res.status(403).send('Access denied');
     }
 
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     try {
         // Query Notion database
         const response = await notion.databases.query({
-            database_id: db,
+            database_id: process.env.NOTION_DATABASE_ID,
             filter: {
                 and: [
                     {
