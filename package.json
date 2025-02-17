@@ -2,13 +2,16 @@
   "name": "notion2ical",
   "version": "1.0.0",
   "private": true,
+  "type": "commonjs",
   "scripts": {
+    "local:dev": "node server.js",
     "dev": "vercel dev",
     "deploy": "vercel deploy --prod"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.5",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "ical-generator": "^3.6.1"
   },
   "devDependencies": {

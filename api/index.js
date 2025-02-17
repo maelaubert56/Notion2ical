@@ -1,10 +1,10 @@
-import { Client } from '@notionhq/client';
-import ical from 'ical-generator';
-import dotenv from 'dotenv';
+const { Client } = require('@notionhq/client');
+const ical = require('ical-generator');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     const { k } = req.query;
 
     // Verify access
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
         // Add events
         response.results.forEach((item) => {
             const date = item.properties[process.env.NOTION_DATE_PROPERTY_NAME].date.start;
-            const title = item.properties.Name.title[0].text.content;
+            const title = item.properties.Nom.title[0].text.content;
 
             calendar.createEvent({
                 start: date,
@@ -63,11 +63,6 @@ export default async function handler(req, res) {
                 description: item.url,
             });
         });
-
-        // Debug mode
-        if (process.env.DEBUG_MODE === 'true') {
-            return res.status(200).send(calendar.toString());
-        }
 
         // Send calendar
         res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
