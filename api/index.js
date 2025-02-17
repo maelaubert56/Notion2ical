@@ -61,7 +61,7 @@ module.exports = async function handler(req, res) {
                 allDay: true,
                 summary: title,
                 description: item.properties["Matière"].select.name,
-                url: item.url,
+                //url: item.url,
             });
         });
 
