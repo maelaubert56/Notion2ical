@@ -24,22 +24,22 @@ module.exports = async function handler(req, res) {
             filter: {
                 and: [
                     {
-                        property: process.env.NOTION_DATE_PROPERTY_NAME,
+                        property: 'Date',
                         date: {
                             is_not_empty: true,
                         },
                     },
                     {
-                        property: process.env.NOTION_STATUS_PROPERTY_NAME,
+                        property: 'Statut',
                         status: {
-                            does_not_equal: process.env.NOTION_EXCLUDE_STATUS,
+                            does_not_equal: 'Terminé 🙌',
                         },
                     },
                 ],
             },
             sorts: [
                 {
-                    property: process.env.NOTION_DATE_PROPERTY_NAME,
+                    property: 'Date',
                     direction: 'descending',
                 },
             ],
@@ -48,19 +48,20 @@ module.exports = async function handler(req, res) {
         // Create calendar
         const calendar = ical({
             name: 'Notion Tasks',
-            ttl: process.env.TTL || 'PT5M',
+            ttl: 'PT5M',
         });
 
         // Add events
         response.results.forEach((item) => {
-            const date = item.properties[process.env.NOTION_DATE_PROPERTY_NAME].date.start;
+            const date = item.properties["Date"].date.start;
             const title = item.properties.Nom.title[0].text.content;
 
             calendar.createEvent({
                 start: date,
                 allDay: true,
                 summary: title,
-                description: item.url,
+                description: item.properties["Matière"].select.name,
+                url: item.url,
             });
         });
 
