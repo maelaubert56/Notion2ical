@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     try {
         // Query Notion database
         const response = await notion.databases.query({
-            database_id: process.env.NOTION_DATABASE_ID,
+            database_id: process.env.NOTION_DB_ID,
             filter: {
                 and: [
                     {
